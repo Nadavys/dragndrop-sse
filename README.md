@@ -1,6 +1,9 @@
 
 
 ## Drag and Drop with Server Sent Events
+Multple users are able to interact with the same drag and drop list.
+
+Open the page on multiple browsers to test.
 
 [View Demo](http://dragndrop.joyfulweb.net/)
 
