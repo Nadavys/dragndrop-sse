@@ -1,0 +1,139 @@
+#app {
+  /* max-width: 1280px;
+  margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.target-before::before {
+  content: " ";
+  display: block;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  top: -4px;
+  left: 0;
+  background: purple;
+}
+
+.target-after:after {
+  content: " ";
+  display: block;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  background: purple;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    /* display: flex;
+    place-items: center; */
+  }
+
+  #app {
+    /* display: flex;
+    margin: 0 auto;
+    justify-content: center; */
+  }
+}
+
+
+
+
+.button {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 15px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s, box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  /* width: 100%; */
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgba(51, 51, 51, 0.05);
+  color: #333333;
+}
+
+.button:disabled>svg {
+  fill: gray;
+}
+
+.button:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+.slide1 {
+  background: linear-gradient(to top, #eecda3 0%, #ef629f 100%);
+}
+
+.slide2 {
+  background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+
+}
+
+.slide3 {
+  background: linear-gradient(135deg, #c3cfe2 0%, #741a55 100%);
+
+}
+
+.slide4 {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+
+}
+
+.slide5 {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+
+}
+
+.slide6{
+  background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+}
+
+.slide7{
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.slide8{
+  background: linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%);
+}
+
+.slide9{
+  background: linear-gradient(120deg, #8565f6 0%, #fda085 100%);
+}
+
+.slide10{
+  background: linear-gradient(to top, #96fbc4 0%, #f9f586 100%) ;
+}

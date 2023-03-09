@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import eventEmitterInstance from '@/lib/eventEmitterInstance'
-import slides from '@/slides'
+import slides from '@/initialSlides'
 
 
 const slidesDB = { slides, version: 1 }  //this should come from db, not local variable
@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       
       res.status(200).json(slidesDB);
       //sent SSE
-      eventEmitterInstance.emit('update', { entity: 'slides', version: slidesDB.version });
+      eventEmitterInstance.emit('update', { domain: 'slides', version: slidesDB.version });
       return;
 
     case 'GET':

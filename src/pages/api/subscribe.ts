@@ -1,17 +1,12 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import eventEmitterInstance from '../../lib/eventEmitterInstance'
-let clients:any = [];
-
-// console.log(eventEmitterInstance)
+type ClientType = { res: NextApiResponse, id: any}
+let clients:ClientType[] = [];
 
 eventEmitterInstance.on('update', (msg:any) => {
   console.log('***---> Data Received', msg, {clients});
-
   sendEventsToAll(msg)
 });
-
-
-// export const sleep = (ms:number) => new Promise(resolve => setTimeout(resolve, ms));
 
 // curl -Nv localhost:3000/api/see
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -33,17 +28,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   clients.push(newClient);
 
-
   req.on('close', () => {
     console.log(`${clientId} Connection closed`);
-    clients = clients.filter((client:any) => client.id !== clientId);
+    clients = clients.filter((client:ClientType) => client.id !== clientId);
   });
 }
 
-
 export default handler;
 
-export function sendEventsToAll(msg:{entity:string, version?:number }) {
-  console.log(clients.length)
-  clients.forEach((client:any) => client.res.write(`data: ${JSON.stringify(msg)}\n\n`))
+export function sendEventsToAll(msg:{domain:string, version?:number }) {
+  console.log("client count",clients.length)
+  clients.forEach((client:ClientType) => client.res.write(`data: ${JSON.stringify(msg)}\n\n`))
 }
