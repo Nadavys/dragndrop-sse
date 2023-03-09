@@ -2,7 +2,7 @@
 
 ## Drag and Drop with Server Sent Events
 
-First, run the development server:
+[View Demo](http://dragndrop.joyfulweb.net/)
 
 ```bash
 npm run dev
