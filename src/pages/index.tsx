@@ -12,7 +12,7 @@ enum Position {
   AFTER
 }
 
-type MessageType = {domain:string, version: number};
+type MessageType = { domain: string, version: number };
 
 export default function Home() {
   const [slides, setsSlides] = useState<slideType[]>([]);
@@ -126,6 +126,7 @@ export default function Home() {
 
     const direction = mid_y_axis - y_relativeToTarget > 0 ? Position.BEFORE : Position.AFTER;
     setBeforeOrAfter(direction);
+    console.log(beforeOrAfter)
 
 
   }
@@ -149,8 +150,9 @@ export default function Home() {
     mutateSlides(temp);
   }
 
-  const handleDragLeave = () => {
-    setdragOverItemIndex(null);
+  const handleDragLeave = (e: React.DragEvent<HTMLElement>,) => {
+    // setdragOverItemIndex(null);
+
   }
 
   const handleDragEnter = (index: number) => {
@@ -198,16 +200,19 @@ export default function Home() {
 
             <div style={styles.slideContainerStyle} key={slide.id}
               className={(index === dragOverItemIndex) ? ((beforeOrAfter === Position.AFTER) ? "target-after" : "target-before") : ""}
+
+              draggable
+              onDragStart={(event) => handleDragStart(event, index)}
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop(index)}
+              onDragEnter={() => handleDragEnter(index)}
+              onDragLeave={handleDragLeave}
+              onDragEnd={handleDragEnd}
+
             >
 
               <div className={`slide${slide.id}`} style={styles.slideStyle}
-                draggable
-                onDragStart={(event) => handleDragStart(event, index)}
-                onDragOver={handleDragOver}
-                onDrop={() => handleDrop(index)}
-                onDragEnter={() => handleDragEnter(index)}
-                onDragLeave={handleDragLeave}
-                onDragEnd={handleDragEnd}
+
               >
                 {slide.title}
 
